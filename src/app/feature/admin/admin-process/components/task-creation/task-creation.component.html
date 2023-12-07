@@ -1,0 +1,49 @@
+<div class="task-creation-form">
+  <div class="task-creation-form__title">Tạo công việc</div>
+  <form
+    class="task-creation-form__form"
+    [formGroup]="creationForm"
+    (ngSubmit)="creatTask()"
+  >
+    <div class="task-creation-form__form__name">
+      <label for="">Tên công việc</label>
+      <input type="text" name="" id="" formControlName="taskName" />
+    </div>
+    <div class="task-creation-form__form__description">
+      <label for="">Mô tả công việc</label>
+      <input type="text" name="" id="" formControlName="taskDescription" />
+    </div>
+    <div class="task-creation-form__form__duration">
+      <label for="">Thời gian</label>
+      <input
+        type="number"
+        name=""
+        id=""
+        min="1"
+        formControlName="taskDuration"
+      />
+      <span>ngày</span>
+    </div>
+    <div class="task-creation-form__form__action">
+      <div
+        class="task-creation-form__form__action__cancel-btn"
+        (click)="onNoClick()"
+      >
+        Hủy
+      </div>
+      <button
+        type="submit"
+        class="task-creation-form__form__action__creative-btn"
+        [disabled]="isLoading"
+        [mat-dialog-close]="{ action: true }"
+      >
+        <app-loader
+          size="15px"
+          color="white"
+          *ngIf="isLoading; else btnname"
+        ></app-loader>
+        <ng-template #btnname>Thêm</ng-template>
+      </button>
+    </div>
+  </form>
+</div>
